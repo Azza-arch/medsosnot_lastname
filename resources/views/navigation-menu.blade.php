@@ -12,16 +12,16 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link class=" hover:pb-2" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-nav-link class=" select-none hover:pb-2" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Home') }}
                     </x-nav-link>
-                    <x-nav-link class=" hover:pb-2" href="{{ route('news') }}" :active="request()->routeIs('news')">
+                    <x-nav-link class=" select-none hover:pb-2" href="{{ route('news') }}" :active="request()->routeIs('news')">
                         {{ __('News') }}
                     </x-nav-link>
-                    <x-nav-link class=" hover:pb-2" href="" :active="request()->routeIs('')">
+                    <x-nav-link class=" select-none hover:pb-2" href="" :active="request()->routeIs('')">
                         {{ __('Explore') }}
                     </x-nav-link>
-                    <x-nav-link class=" hover:pb-2" href="{{ route ('newsmy') }}" :active="request()->routeIs('newsmy')">
+                    <x-nav-link class=" select-none hover:pb-2" href="{{ route ('newsmy') }}" :active="request()->routeIs('newsmy')">
                         {{ __('Profile') }}
                     </x-nav-link>
                 </div>

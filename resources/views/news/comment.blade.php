@@ -1,9 +1,9 @@
-<x-app-layout>
+<x-app-layout class="select-none">
     <div class="bg-white mx-auto w-2/3 p-3 m-10">
 
         <div class="mb-4 mx-auto text-justify">
-            <h1 class="font-semibold mb-3">{{ $news->title }}</h1>
-            <p>{{ $news->description }}</p>
+            <h1 class="font-semibold mb-3 select-none">{{ $news->title }}</h1>
+            <p class="select-none">{{ $news->description }}</p>
             <br>
             <form action="{{ route('storecomment') }}" method="POST">
                 @csrf

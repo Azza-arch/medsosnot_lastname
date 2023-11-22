@@ -1,6 +1,6 @@
-<x-app-layout>
+<x-app-layout class="select-none">
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class=" select-none font-semibold text-xl text-gray-800 leading-tight">
             {{ __('News') }}
         </h2>
     </x-slot>
