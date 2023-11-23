@@ -1,8 +1,8 @@
 <x-app-layout class="select-none">
     <x-slot name="header">
-        <div class="flex items-center">
+        <div class="flex items-center pt-16">
             <div>
-                <img class=" select-none h-15 w-15 rounded-full object-cover m-2" src="{{ Auth::user()->profile_photo_url }}">
+                <img class=" select-none h-12 w-12 rounded-full object-cover m-2" src="{{ Auth::user()->profile_photo_url }}">
             </div>
             <div>
                 <h2 class=" select-none font-semibold text-xl text-gray-800 leading-tight">

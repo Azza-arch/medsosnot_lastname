@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\News;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -13,8 +14,12 @@ class CommentController extends Controller
         return view("news.comment");
     }
     //
-    public function storecomment(Request $request)
+    public function storecomment(Request $request):RedirectResponse
     {
+        $request->validate([
+            'comment'=>'required',
+        ]);
+
         $comment = new Comment;
         $comment->id = $request->id;
         $newsId = $request->news_id;
@@ -22,7 +27,7 @@ class CommentController extends Controller
         $comment->comment = $request->comment;
         $comment->user_id = auth()->user()->id;
         $comment->save();
-        return back()->with("success", "");
+        return back();
     }
 
     public function show($news_id)

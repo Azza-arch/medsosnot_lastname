@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,8 +14,13 @@ class NewsController extends Controller
         return view("news.index");
     }
     //
-    public function storenews(Request $request)
+    public function storenews(Request $request): RedirectResponse
     {
+        $request->validate([
+            'title' =>'required',
+            'description' => 'required|max:255',
+        ]);
+
         $news = new News;
         $news->id = $request->id;
         $news->title = $request->title;
@@ -22,7 +28,7 @@ class NewsController extends Controller
         $news->image = $request->image;
         $news->user_id = auth()->user()->id;
         $news->save();
-        return redirect("news")->with("success", "");
+        return redirect("news")->with('success','You have post the news');
     }
 
     public function deletenews($id)
@@ -31,7 +37,7 @@ class NewsController extends Controller
             $news = News::findOrFail($id);
             $news->comments()->delete(); // Delete associated comments
             $news->delete();
-            return back()->with('success', '');
+            return back()->with('success','You have delete the news');
         }
     }
 
@@ -46,8 +52,8 @@ class NewsController extends Controller
 
     public function showNews()
     {
-        
-        $news = News::orderBy('created_at','desc')->get();
+
+        $news = News::orderBy('created_at', 'desc')->get();
         return view("news\index", compact("news"));
     }
 }

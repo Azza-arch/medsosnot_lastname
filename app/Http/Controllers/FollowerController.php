@@ -16,7 +16,8 @@ class FollowerController extends Controller
     public function storefollow(Request $request)
     {
         $follow = new Follows;
-        $follow->user_id = $request->id;
+        $user = Auth::user();
+        $follow->user_id = $user->id;
         $follow->following_id = $request->id;
         $follow->save();
         return back()
@@ -27,12 +28,12 @@ class FollowerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function shows()
-    {
-        $user = Auth::user();
-        $followers = $user->followers;
-        return view('news.profile',compact("followers"));
-    }
+    // public function shows()
+    // {
+    //     $user = Auth::user();
+    //     $followers = $user->followers;
+    //     return view('news.profile',compact("followers"));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -59,7 +60,7 @@ class FollowerController extends Controller
             $unfollow = Follows::where([['user_id', auth()->user()->id], ['following_id', $id]])
                 ->delete();
             if ($unfollow) {
-                return back();
+                return back()->with('success','You have unfollow this person');
             } else {
                 return redirect('/profile/' . auth()->user()->username);
             };
