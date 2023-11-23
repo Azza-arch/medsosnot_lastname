@@ -19,9 +19,7 @@
                     placeholder="What's on your mind?"></textarea>
             </div>
 
-            <div class="mb-4 w-full">
-                <input name="image" type="file" class="border border-gray-300 p-2 w-full">
-            </div>
+            <x-secondary-button class="my-5 border border-grey-300 mr-2">{{ __('Upload Photo') }}</x-secondary-button>
 
             <div class="text-center">
                 <button type="submit"
