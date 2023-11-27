@@ -23,7 +23,7 @@
 
             <div class="text-center">
                 <button type="submit"
-                    class="bg-orange-500 shadow-md hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded mb-5">Post</button>
+                    class="bg-orange-400 shadow-lg hover:shadow-inner hover:bg-yellow-300 text-white font-bold py-2 px-4 rounded mb-5">Post</button>
             </div>
         </form>
     </div>
