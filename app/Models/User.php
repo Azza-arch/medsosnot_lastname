@@ -72,6 +72,17 @@ class User extends Authenticatable
     {
         return $this->hasMany(Follows::class);
     }
+
+    public function like()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function isLike($userId)
+    {
+        return $this->like()->where('like_id', $userId)->exists();
+    }
+
     public function isFollowing($userId)
     {
         return $this->followings()->where('following_id', $userId)->exists();

@@ -43,6 +43,23 @@
                         <td class="ml-6 max-w-3xl">{{ $item->description }}</td>
                     </tr>
                     <tr>
+                        <td>
+                            @if (auth()->check() && auth()->user()->id !== $item->user->id)
+                                @if (auth()->user()->isLike($item->user->id))
+                                    <form method="post" action="{{ route('unlike', $item->user->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="rounded shadow-md py-2 px-4" type="submit">Unlike</button>
+                                    </form>
+                                @else
+                                    <form method="post" action="{{ route('like') }}">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $item->user->id }}">
+                                        <button class="rounded bg-slate-700 text-white py-2 px-6" type="submit">Like</button>
+                                    </form>
+                                @endif
+                            @endif
+                        </td>
                         <td class="flex items-center">
                             <div class="w-6">
                                 <a href="{{ route('comment', ['news_id' => $item->id]) }}">

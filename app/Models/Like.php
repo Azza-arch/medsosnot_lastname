@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Like extends Model
 {
     use HasFactory;
-    protected $fillable = []
+    protected $fillable = ['user_id','like_id'];
 
+    public function user()
+    {
+        return $this->hasMany(User::class, 'user_id');
+    }
 }
