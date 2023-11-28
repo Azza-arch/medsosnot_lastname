@@ -27,7 +27,8 @@
                                     <form method="post" action="{{ route('storefollow') }}">
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $item->user->id }}">
-                                        <button class="rounded bg-slate-700 text-white py-2 px-6" type="submit">Follow</button>
+                                        <button class="rounded bg-slate-700 text-white py-2 px-6"
+                                            type="submit">Follow</button>
                                     </form>
                                 @endif
                             @endif
@@ -45,21 +46,35 @@
                     <tr>
                         <td>
                             @if (auth()->check() && auth()->user()->id !== $item->user->id)
-                                @if (auth()->user()->isLike($item->user->id))
-                                    <form method="post" action="{{ route('unlike', $item->user->id) }}">
+                                @if (auth()->user()->isLike($item->id))
+                                    <form method="post" action="{{ route('unlike', $item->id) }}">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="rounded shadow-md py-2 px-4" type="submit">Unlike</button>
+                                        <button type="submit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                            </svg>
+                                        </button>
                                     </form>
                                 @else
                                     <form method="post" action="{{ route('like') }}">
                                         @csrf
-                                        <input type="hidden" name="id" value="{{ $item->user->id }}">
-                                        <button class="rounded bg-slate-700 text-white py-2 px-6" type="submit">Like</button>
+                                        <input type="hidden" name="like_id" value="{{ $item->user->id }}">
+                                        <input type="hidden" name="news_id" value="{{ $item->id }}">
+                                        <button type="submit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                            </svg>
+                                        </button>
                                     </form>
                                 @endif
                             @endif
                         </td>
+                        
                         <td class="flex items-center">
                             <div class="w-6">
                                 <a href="{{ route('comment', ['news_id' => $item->id]) }}">

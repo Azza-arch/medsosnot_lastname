@@ -18,63 +18,38 @@ class LikeController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
-    public function like(Request $request):RedirectResponse
+    public function like(Request $request)
     {
-        $like= new Like;
-
+        $like = new Like;
         $user = Auth::user();
 
+        $newsId = $request->news_id;
+        $like->news_id = $newsId;
+
         $like->user_id = $user->id;
-        $like->like_id = $request->id;
+        $like->like_id = $request->like_id;
 
         $like->save();
         return back();
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
     /**
      * Remove the specified resource from storage.
      */
-    public function unlike(string $id)
+    public function unlike($id)
     {
-        if(Auth::check()){
-            $like =Like::findOrFail($id);
-            $like->delete();
-            return back();
-        }
+        if (Auth::check()) {
 
+            $unlike = Like::where([['user_id', auth()->user()->id], ['like_id', $id]])
+                ->delete();
+                if ($unlike) {
+                    return back()->with('success', 'You have unfollow this person');
+    
+                    //if not
+                } else {
+                    return redirect('/profile/' . auth()->user()->username);
+                };
+        };
     }
 }

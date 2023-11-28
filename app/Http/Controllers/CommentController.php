@@ -21,7 +21,6 @@ class CommentController extends Controller
         ]);
 
         $comment = new Comment;
-        $comment->id = $request->id;
         $newsId = $request->news_id;
         $comment->news_id = $newsId;
         $comment->comment = $request->comment;
