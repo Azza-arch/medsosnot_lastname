@@ -832,32 +832,48 @@
 </head>
 
 <body class="antialiased">
+    
     <div
-        class=" bg-gray-100 selection:bg-red-500 selection:text-white flex items-center justify-center min-h-screen p-2">
+        class=" bg-slate-300 selection:bg-red-500 selection:text-white flex items-center justify-center min-h-screen p-2">
 
-        <div class="flex">
-            <div class=" flex p-6 flex-row items-center">
-                <h1 class="font-semibold text-5xl text-blue-500">MEDSOS</h1>
+        <div class="absolute top-5 left-6 flex flex-col gap-1 z-40">
+            <h1 class="font-semibold text-xl italic text-white w-1/2 bg-slate-950 inline-block">Welcome to MedSOS,</h1>
+            <div class="flex-row w-full">
+                <h1 class="font-semibold text-xl italic text-white bg-slate-950 inline-block">a revolutionary social nexus</h1>
+                <h1 class="font-semibold text-xl italic text-white bg-slate-950 inline-block"> laser-focused</h1>
             </div>
-            <div class="ml-6 border-l border-black"></div>
+            <h1 class="font-semibold text-xl italic text-white w-96 bg-slate-950 inline-block"> on fostering meaningful connections</h1>
+            <h1 class="font-semibold text-xl italic text-white w-7/12 bg-slate-950 inline-block">in this vibrant locale.</h1>
+            <h1 class="font-semibold text-xl italic text-white w-2/3 bg-slate-950 inline-block">Join us in the evolution of</h1>
+            <h1 class="font-semibold text-xl italic text-white w-1/2 bg-slate-950 inline-block">social interaction.</h1>
+
+        </div>
+        <div class="absolute text-center font-medium bg-green-300 left-80 shadow-lg w-52 h-10 z-50 rounded-full">Jom pergi makan?</div>
+        <div class="absolute text-center font-medium bg-transparent border-green-300 border-2 left-[315px] w-[220px] h-12 z-50 rounded-full"></div>
+        <div class="absolute text-center font-medium bg-white bottom-40 left-32 shadow-lg w-52 h-10 z-50 rounded-full">Jom makan.</div>
+        <div class="absolute text-center font-medium bg-transparent bottom-[150px] border-white border-2 left-[116px] w-60 h-16 z-50 rounded-full"></div>
+        <div class="absolute bg-white top-28 left-52 shadow-lg w-64 h-96 rounded-md"></div>
+        <div class="flex">
+
             @if (Route::has('login'))
                 <div class=" flex p-6 flex-row items-center">
                     @auth
                         <a href="{{ url('/dashboard') }}"
-                            class=" bg-white rounded  p-3 shadow-sm hover:shadow-lg font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                            class="absolute right-48 bg-white rounded  p-3 shadow-sm hover:shadow-lg font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}"
-                            class="  bg-white rounded p-3 shadow-sm hover:shadow-lg  font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
+                            class="absolute right-60 bg-white rounded p-3 shadow-sm hover:shadow-lg  font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
                             in</a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}"
-                                class="  bg-white rounded p-3 shadow-sm hover:shadow-lg ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                                class="absolute right-32 bg-white rounded p-3 shadow-sm hover:shadow-lg ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
                         @endif
                     @endauth
                 </div>
             @endif
         </div>
+        <p class="absolute right-10 bottom-3 text-xs font-bold text-white">MADE BY AZZA_ARCH - 2023</p>
     </div>
 </body>
 

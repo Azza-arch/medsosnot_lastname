@@ -1,11 +1,11 @@
-<x-app-layout class="select-none">
+<x-app-layout class="select-none my-5">
     <x-slot name="header">
         <h2 class=" select-none font-semibold text-xl text-gray-800 leading-tight pt-16">
             {{ __('News') }}
         </h2>
     </x-slot>
 
-    <div class="bg-white rounded w-3/4 shadow mt-5 p-4 mx-auto flex-grow text-justify">
+    <div class="bg-white rounded w-3/4 shadow my-5 p-4 mx-auto flex-grow text-justify">
         <div>
             <table class="mx-auto">
                 @foreach ($news as $item)
@@ -45,7 +45,6 @@
                     </tr>
                     <tr>
                         <td>
-                            @if (auth()->check() && auth()->user()->id !== $item->user->id)
                                 @if (auth()->user()->isLike($item->id))
                                     <form method="post" action="{{ route('unlike', $item->id) }}">
                                         @csrf
@@ -71,7 +70,6 @@
                                             </svg>
                                         </button>
                                     </form>
-                                @endif
                             @endif
                         </td>
                         

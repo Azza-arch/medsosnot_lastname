@@ -41,7 +41,7 @@ class LikeController extends Controller
     {
         if (Auth::check()) {
 
-            $unlike = Like::where([['user_id', auth()->user()->id], ['like_id', $id]])
+            $unlike = Like::where([['user_id', auth()->user()->id], ['news_id', $id]])
                 ->delete();
                 if ($unlike) {
                     return back()->with('success', 'You have unfollow this person');
