@@ -827,6 +827,32 @@
                 padding: 2rem
             }
         }
+
+        .text-container {
+            position: absolute;
+            top: 5%;
+            left: 4%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            user-select: none;
+        }
+
+        .text-container h1 {
+            font-weight: 600;
+            font-size: 1rem;
+            font-style: italic;
+            color: #ffffff;
+            background-color: #1f1f1f;
+            padding: 0.7rem;
+            line-height: 1;
+        }
+
+        .text-container .highlighted {
+            background-color: #ffffff;
+            color: skyblue;
+        }
+
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -834,25 +860,20 @@
 <body class="antialiased">
     
     <div
-        class=" bg-slate-300 selection:bg-red-500 selection:text-white flex items-center justify-center min-h-screen p-2">
+        class= " bg-gradient-to-t from-blue-300 to-blue-400 flex items-center justify-center min-h-screen p-2">
 
-        <div class="absolute top-5 left-6 flex flex-col gap-1 z-40">
-            <h1 class="font-semibold text-xl italic text-white w-1/2 bg-slate-950 inline-block">Welcome to MedSOS,</h1>
-            <div class="flex-row w-full">
-                <h1 class="font-semibold text-xl italic text-white bg-slate-950 inline-block">a revolutionary social nexus</h1>
-                <h1 class="font-semibold text-xl italic text-white bg-slate-950 inline-block"> laser-focused</h1>
+        <div class="text-container">
+            <h1 class=" w-3/5">Welcome to MedSOS,</h1>
+            <div class="flex-row">
+                <h1 class="highlighted">a revolutionary social nexus laser-focused</h1>
             </div>
-            <h1 class="font-semibold text-xl italic text-white w-96 bg-slate-950 inline-block"> on fostering meaningful connections</h1>
-            <h1 class="font-semibold text-xl italic text-white w-7/12 bg-slate-950 inline-block">in this vibrant locale.</h1>
-            <h1 class="font-semibold text-xl italic text-white w-2/3 bg-slate-950 inline-block">Join us in the evolution of</h1>
-            <h1 class="font-semibold text-xl italic text-white w-1/2 bg-slate-950 inline-block">social interaction.</h1>
-
+            <h1 class=" w-11/12">on fostering meaningful connections</h1>
+            <h1 class=" w-3/5">in this vibrant locale.</h1>
+            <h1 class=" w-3/4">Join us in the evolution of</h1>
+            <h1 class=" w-1/2">social interaction.</h1>
         </div>
-        <div class="absolute text-center font-medium bg-green-300 left-80 shadow-lg w-52 h-10 z-50 rounded-full">Jom pergi makan?</div>
-        <div class="absolute text-center font-medium bg-transparent border-green-300 border-2 left-[315px] w-[220px] h-12 z-50 rounded-full"></div>
-        <div class="absolute text-center font-medium bg-white bottom-40 left-32 shadow-lg w-52 h-10 z-50 rounded-full">Jom makan.</div>
-        <div class="absolute text-center font-medium bg-transparent bottom-[150px] border-white border-2 left-[116px] w-60 h-16 z-50 rounded-full"></div>
-        <div class="absolute bg-white top-28 left-52 shadow-lg w-64 h-96 rounded-md"></div>
+
+
         <div class="flex">
 
             @if (Route::has('login'))
@@ -873,7 +894,7 @@
                 </div>
             @endif
         </div>
-        <p class="absolute right-10 bottom-3 text-xs font-bold text-white">MADE BY AZZA_ARCH - 2023</p>
+        <p class="absolute bottom-3 text-xs font-bold text-white">MADE BY AZZA_ARCH - 2023</p>
     </div>
 </body>
 
