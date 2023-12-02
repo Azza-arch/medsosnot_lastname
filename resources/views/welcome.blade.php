@@ -850,51 +850,49 @@
 
         .text-container .highlighted {
             background-color: #ffffff;
-            color: skyblue;
+            color: red;
+            display: flex;
+            flex-direction: row;
         }
-
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="antialiased">
-    
-    <div
-        class= " bg-gradient-to-t from-blue-300 to-blue-400 flex items-center justify-center min-h-screen p-2">
+
+    <div class= "bg-gradient-to-t from-blue-300 to-blue-400 flex items-center justify-center min-h-screen p-2">
 
         <div class="text-container">
-            <h1 class=" w-3/5">Welcome to MedSOS,</h1>
-            <div class="flex-row">
-                <h1 class="highlighted">a revolutionary social nexus laser-focused</h1>
-            </div>
-            <h1 class=" w-11/12">on fostering meaningful connections</h1>
-            <h1 class=" w-3/5">in this vibrant locale.</h1>
-            <h1 class=" w-3/4">Join us in the evolution of</h1>
-            <h1 class=" w-1/2">social interaction.</h1>
+            <h1 class="w-3/5">Welcome to MedSOS,</h1>
+            <h1 class="highlighted">a revolutionary social nexus laser-focused</h1>
+            <h1 class="w-11/12">on fostering meaningful connections</h1>
+            <h1 class="w-3/5">in this vibrant locale.</h1>
+            <h1 class="w-3/4">Join us in the evolution of</h1>
+            <h1 class="w-1/2">social interaction.</h1>
         </div>
 
 
         <div class="flex">
 
             @if (Route::has('login'))
-                <div class=" flex p-6 flex-row items-center">
+                <div class=" flex p-6 flex-row items-center select-none">
                     @auth
                         <a href="{{ url('/dashboard') }}"
-                            class="absolute right-48 bg-white rounded  p-3 shadow-sm hover:shadow-lg font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                            class="  absolute right-48  bg-white rounded  p-3 shadow-sm hover:shadow-lg font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm hover:mb-1 focus:outline-red-500">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}"
-                            class="absolute right-60 bg-white rounded p-3 shadow-sm hover:shadow-lg  font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
+                            class="absolute sm:right-60 right-28 bg-white rounded p-2 sm:p-3 shadow-sm hover:shadow-lg font-normal sm:font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm hover:mb-1 focus:outline-red-500">Log
                             in</a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}"
-                                class="absolute right-32 bg-white rounded p-3 shadow-sm hover:shadow-lg ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                                class="absolute sm:right-32 right-4 bg-white rounded p-2 sm:p-3 shadow-sm hover:shadow-lg font-normal sm:font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm hover:mb-1 focus:outline-red-500">Register</a>
                         @endif
                     @endauth
                 </div>
             @endif
         </div>
-        <p class="absolute bottom-3 text-xs font-bold text-white">MADE BY AZZA_ARCH - 2023</p>
+        <p class="absolute bottom-3 font-bold text-[10px] text-white">MADE BY AZZA_ARCH - 2023</p>
     </div>
 </body>
 
