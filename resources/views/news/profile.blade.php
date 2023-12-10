@@ -1,17 +1,17 @@
-<x-app-layout class="select-none">
+<x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center pt-16">
+        <div class="flex items-center">
             <div>
-                <img class=" select-none h-12 w-12 rounded-full object-cover m-2" src="{{ Auth::user()->profile_photo_url }}">
+                <img class=" w-10 rounded-full mr-4 " src="{{ Auth::user()->profile_photo_url }}">
             </div>
             <div>
-                <h2 class=" select-none font-semibold text-xl text-gray-800 leading-tight">
+                <h2 class="font-semibold text-xl text-gray-800">
                     {{ Auth::user()->name }}
                 </h2>
             </div>
     </x-slot>
 
-    <div class="bg-white rounded w-3/4 shadow mt-5 p-4 mx-auto flex-grow text-justify">
+    <div class="bg-white rounded w-3/4 shadow mt-5 text-justify flex-col items-center mx-auto w-3/4 m-5">
         <div>
             <table class="mx-auto">
                 @foreach ($news as $item)

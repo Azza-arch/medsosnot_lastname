@@ -1,31 +1,24 @@
-<nav x-data="{ open: false }" class="fixed w-full bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="fixed h-full border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-mark class="block h-9 w-auto" />
-                    </a>
-                </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link class=" select-none hover:pb-2" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                <div class="hidden pt-32 select-none flex-col space-y-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link class=" py-6" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Home') }}
                     </x-nav-link>
-                    <x-nav-link class=" select-none hover:pb-2" href="{{ route('news') }}" :active="request()->routeIs('news')">
+                    <x-nav-link class=" py-6" href="{{ route('news') }}" :active="request()->routeIs('news')">
                         {{ __('News') }}
                     </x-nav-link>
-                    <x-nav-link class=" select-none hover:pb-2" href="" :active="request()->routeIs('')">
+                    <x-nav-link class="py-6" href="" :active="request()->routeIs('')">
                         {{ __('Explore') }}
                     </x-nav-link>
-                    <x-nav-link class=" select-none hover:pb-2" href="{{ route ('newsmy') }}" :active="request()->routeIs('newsmy')">
+                    <x-nav-link class="py-6" href="{{ route ('newsmy') }}" :active="request()->routeIs('newsmy')">
                         {{ __('Profile') }}
                     </x-nav-link>
                 </div>
-            </div>
+
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->

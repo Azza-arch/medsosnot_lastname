@@ -862,6 +862,8 @@
 
     <div class= "bg-gradient-to-t from-blue-300 to-blue-400 flex items-center justify-center min-h-screen p-2">
 
+
+        {{-- <img src="https://cdn.shopify.com/s/files/1/0535/7784/2838/files/terengganu_drawbridge_240x240.png?v=1651648905" class="select-none absolute bottom-0 right-0"> --}}
         <div class="text-container">
             <h1 class="w-3/5">Welcome to MedSOS,</h1>
             <h1 class="highlighted">a revolutionary social nexus laser-focused</h1>

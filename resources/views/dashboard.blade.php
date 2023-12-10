@@ -1,9 +1,10 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="select-none font-semibold text-xl text-gray-800 leading-tight pt-16">
+    <x-slot name="header" class="bg-white">
+        <h2 class="select-none font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Home') }}
         </h2>
     </x-slot>
+    
 
     <div class="flex-col items-center mx-auto w-3/4 m-5">
         <form action="{{ route('storenews') }}" method="POST">
