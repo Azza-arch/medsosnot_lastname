@@ -1,0 +1,42 @@
+name: Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+
+    - name: Laravel Build
+      run: |
+        composer install --optimize-autoloader --no-dev
+        php artisan config:cache
+        php artisan route:cache
+        php artisan view:cache
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: Node.js Build
+      run: |
+        npm install
+        npm run production
+
+    - name: Deploy to Cloudflare Pages
+      uses: cloudflare/pages@main
+      with:
+        build_dir: 'public'
+        token: ${{ secrets.CF_API_TOKEN }}
