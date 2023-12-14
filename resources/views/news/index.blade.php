@@ -6,92 +6,82 @@
     </x-slot>
 
     <div class="flex-col items-center mx-auto w-3/4 m-5">
-        <div class="bg-white">
+        <div class="bg-white p-5">
             <table class="mx-auto">
                 @foreach ($news as $item)
-                    <tr>
-                        <td class="flex">
-                            <img class="h-8 w-8 rounded-full object-cover m-2" src="{{ $item->user->profile_photo_url }}"
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-8 w-8 rounded-full object-cover" src="{{ $item->user->profile_photo_url }}"
                                 alt="{{ $item->user->name }}">
-                            <span class="text-orange-500 mt-2">{{ $item->user->name }}</span>
-                        </td>
-                        <td>
-                            @if (auth()->check() && auth()->user()->id !== $item->user->id)
-                                @if (auth()->user()->isFollowing($item->user->id))
-                                    <form method="post" action="{{ route('unfollow', $item->user->id) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="rounded shadow-md py-2 px-4" type="submit">Unfollow</button>
-                                    </form>
-                                @else
-                                    <form method="post" action="{{ route('storefollow') }}">
-                                        @csrf
-                                        <input type="hidden" name="id" value="{{ $item->user->id }}">
-                                        <button class="rounded bg-slate-700 text-white py-2 px-6"
-                                            type="submit">Follow</button>
-                                    </form>
+                        </div>
+                        <div class="ml-2">
+                            <span class="text-orange-500">{{ $item->user->name }}</span>
+                            <p class="font-semibold">{{ $item->title }}</p>
+                            <p class="text-gray-500 max-w-3xl">{{ $item->description }}</p>
+                            <div class="flex items-center mt-2">
+                                @if (auth()->check() && auth()->user()->id !== $item->user->id)
+                                    @if (auth()->user()->isFollowing($item->user->id))
+                                        <form method="post" action="{{ route('unfollow', $item->user->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="text-red-500" type="submit">Unfollow</button>
+                                        </form>
+                                    @else
+                                        <form method="post" action="{{ route('storefollow') }}">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $item->user->id }}">
+                                            <button class="bg-slate-700 text-white py-1 px-3 rounded"
+                                                type="submit">Follow</button>
+                                        </form>
+                                    @endif
                                 @endif
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="font-semibold">{{ $item->title }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ $item->image }}</td>
-                    </tr>
-                    <tr>
-                        <td class="ml-6 max-w-3xl">{{ $item->description }}</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            @if (auth()->user()->isLike($item->id))
-                                <form method="post" action="{{ route('unlike', $item->id) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="like-button">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24"
-                                            stroke-width="1.5" class="w-6 h-6 transition">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-                                        </svg>
-                                    </button>
-                                </form>
-                            @else
-                                <form method="post" action="{{ route('like') }}">
-                                    @csrf
-                                    <input type="hidden" name="like_id" value="{{ $item->user->id }}">
-                                    <input type="hidden" name="news_id" value="{{ $item->id }}">
-                                    <button type="submit" class="like-button">
+                                <div class="ml-4">
+                                    @if (auth()->user()->isLike($item->id))
+                                        <form method="post" action="{{ route('unlike', $item->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="red"
+                                                    viewBox="0 0 24 24" stroke-width="1.5" class="w-6 h-6 transition">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    @else
+                                        <form method="post" action="{{ route('like') }}">
+                                            @csrf
+                                            <input type="hidden" name="like_id" value="{{ $item->user->id }}">
+                                            <input type="hidden" name="news_id" value="{{ $item->id }}">
+                                            <button type="submit">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="red"
+                                                    class="w-6 h-6 transition">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    @endif
+                                </div>
+                                <div class="ml-4 mb-1">
+                                    <a href="{{ route('comment', ['news_id' => $item->id]) }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6 transition">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                            stroke-width="1.5" class="w-6 h-6 stroke-blue-500">
+                                            <!-- Customize color here -->
+                                            <a href="{{ route('comment', ['news_id' => $item->id]) }}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                    class="w-6 h-6 stroke-blue-500"> <!-- Customize color here -->
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M3 2a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2h-5.414l-2.293-2.293A1 1 0 007 2H3zm9 0v7m0 0l3-3m-3 3l-3-3"></path>
+                                            
                                         </svg>
-                                    </button>
-                                </form>
-                            @endif
-
-                        </td>
-
-                        <td class="flex items-center">
-                            <div class="w-6">
-                                <a href="{{ route('comment', ['news_id' => $item->id]) }}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" class="w-6 h-6 stroke-orange-400">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-                                    </svg>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="ml-2 text-slate-400">{{ $item->created_at }}</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><br>
-                            <hr>
-                        </td> <!-- Add a horizontal line as a gap -->
-                    </tr>
+                        </div>
+                    </div>
+                    <hr class="my-4">
                 @endforeach
             </table>
         </div>

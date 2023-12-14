@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Medsos</title>
+    <title>LapizLoc</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -865,7 +865,7 @@
 
         {{-- <img src="https://cdn.shopify.com/s/files/1/0535/7784/2838/files/terengganu_drawbridge_240x240.png?v=1651648905" class="select-none absolute bottom-0 right-0"> --}}
         <div class="text-container">
-            <h1 class="w-3/5">Welcome to MedSOS,</h1>
+            <h1 class="w-3/5">Welcome to LapizLoc,</h1>
             <h1 class="highlighted">a revolutionary social nexus laser-focused</h1>
             <h1 class="w-11/12">on fostering meaningful connections</h1>
             <h1 class="w-3/5">in this vibrant locale.</h1>
@@ -875,7 +875,6 @@
 
 
         <div class="flex">
-
             @if (Route::has('login'))
                 <div class=" flex p-6 flex-row items-center select-none">
                     @auth
@@ -885,7 +884,7 @@
                         <a href="{{ route('login') }}"
                             class="absolute sm:right-60 right-28 bg-white rounded p-2 sm:p-3 shadow-sm hover:shadow-lg font-normal sm:font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm hover:mb-1 focus:outline-red-500">Log
                             in</a>
-
+                        {{-- @include('auth.login') --}}
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}"
                                 class="absolute sm:right-32 right-4 bg-white rounded p-2 sm:p-3 shadow-sm hover:shadow-lg font-normal sm:font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm hover:mb-1 focus:outline-red-500">Register</a>
